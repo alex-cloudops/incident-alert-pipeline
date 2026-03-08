@@ -1,0 +1,64 @@
+{
+    "routing_rules": [
+        {
+            "name": "Critical Infrastructure",
+            "conditions": {
+                "severity": "CRITICAL",
+                "source": null
+            },
+            "channel": "sns",
+            "escalate": true,
+            "priority": 1
+        },
+        {
+            "name": "High Severity",
+            "conditions": {
+                "severity": "HIGH",
+                "source": null
+            },
+            "channel": "sns",
+            "escalate": false,
+            "priority": 2
+        },
+        {
+            "name": "Medium Severity",
+            "conditions": {
+                "severity": "MEDIUM",
+                "source": null
+            },
+            "channel": "log",
+            "escalate": false,
+            "priority": 3
+        },
+        {
+            "name": "Low Severity",
+            "conditions": {
+                "severity": "LOW",
+                "source": null
+            },
+            "channel": "log",
+            "escalate": false,
+            "priority": 4
+        },
+        {
+            "name": "Uptime Alerts",
+            "conditions": {
+                "severity": null,
+                "source": "synthetic-uptime-monitor"
+            },
+            "channel": "sns",
+            "escalate": false,
+            "priority": 2
+        },
+        {
+            "name": "Telemetry Alerts",
+            "conditions": {
+                "severity": null,
+                "source": "cloud-telemetry-agent"
+            },
+            "channel": "sns",
+            "escalate": false,
+            "priority": 2
+        }
+    ]
+}
