@@ -20,10 +20,11 @@ def create_event(source, alert_type, message, metadata=None):
     return event
 
 
-def load_sample_events():
+def load_events():
     """
-    Simulated incoming alert events from across the portfolio ecosystem.
-    In production these would arrive via API, queue, or webhook.
+    Loads alert events for pipeline processing.
+    Currently uses simulated events — in production these would
+    arrive via API, queue, or webhook.
     """
     return [
         create_event(

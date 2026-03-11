@@ -1,4 +1,4 @@
-from pipeline.ingestor import load_sample_events
+from pipeline.ingestor import load_events
 from pipeline.enricher import enrich_all
 from pipeline.classifier import classify_all
 from pipeline.router import route_all
@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     # Step 1: Ingest
     print("\n📥 Ingesting alert events...")
-    events = load_sample_events()
+    events = load_events()
     print(f"  → {len(events)} event(s) received")
 
     # Step 2: Enrich
