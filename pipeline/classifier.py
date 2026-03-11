@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 def classify_event(event):
     """
     Classifies enriched alert events by severity and urgency.
@@ -64,6 +69,13 @@ def classify_event(event):
     elif alert_type == 'LOG_ANOMALY':
         severity = 'MEDIUM'
         urgency = 'ROUTINE'
+
+    else:
+        logger.warning(
+            f"Unrecognized alert_type '{alert_type}' for event from source "
+            f"'{source}' — defaulting to LOW/ROUTINE. "
+            f"Message: {message[:100]}"
+        )
 
     classified['severity'] = severity
     classified['urgency'] = urgency

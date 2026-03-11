@@ -10,7 +10,13 @@ REGION = config['aws']['region']
 SNS_TOPIC_ARN = config['aws']['sns_topic_arn']
 RULES_FILE = config['routing']['rules_file']
 
-client = boto3.client('sns', region_name=REGION)
+
+def get_sns_client():
+    """
+    Returns an SNS client on demand — not at module import time.
+    Prevents import failures when AWS credentials are not configured.
+    """
+    return boto3.client('sns', region_name=REGION)
 
 
 def load_routing_rules():
@@ -91,6 +97,7 @@ def send_sns_alert(event, escalate):
     )
 
     try:
+        client = get_sns_client()
         client.publish(
             TopicArn=SNS_TOPIC_ARN,
             Subject=f"[{event.get('severity', 'UNKNOWN')}] {event.get('alert_type_label', event['alert_type'])} — {event['source']}",
