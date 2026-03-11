@@ -193,7 +193,7 @@ This pipeline is designed to receive events from all repos in the Alex-CloudOps 
 - [ ] Incident auto-close logic
 - [ ] Escalation timer with follow-up alerts
 - [ ] Power BI incident dashboard integration
-- [ ] Unit tests with pytest
+- [x] Unit tests with pytest
 
 ---
 
